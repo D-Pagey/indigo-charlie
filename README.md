@@ -10,7 +10,6 @@
 
 ## To Do:
 
-- [ ] Dont render any page until seen if existing session / prevent flicker
 - [ ] Add password toggle
 
 ## Notes

@@ -18,6 +18,8 @@ const Home: NextPage<{ imageUrl: string }> = ({ imageUrl }) => {
     }
   }, [router, username]);
 
+  if (!username) return null;
+
   return (
     <main className="flex flex-col items-center">
       {hasMounted && (
