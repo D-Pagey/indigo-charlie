@@ -3,13 +3,15 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { useAuth } from "../../contexts";
+import { useHasMounted } from "../../hooks";
 
 type Props = {
   children: JSX.Element;
 };
 
 export const PageLayout: FC<Props> = ({ children }) => {
-  const { username, handleLogout, isSSR } = useAuth();
+  const { username, handleLogout } = useAuth();
+  const hasMounted = useHasMounted();
 
   return (
     <div className="flex flex-col items-center min-h-screen">
@@ -31,7 +33,7 @@ export const PageLayout: FC<Props> = ({ children }) => {
           </a>
         </Link>
 
-        {!isSSR && username && (
+        {hasMounted && username && (
           <button
             type="button"
             className="bg-primary px-4 py-2 rounded"

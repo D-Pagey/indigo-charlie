@@ -4,6 +4,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useRouter } from "next/router";
 
 import { useAuth } from "../contexts";
+import { useEffect } from "react";
 
 type Inputs = {
   username: string;
@@ -11,7 +12,7 @@ type Inputs = {
 };
 
 const Login: NextPage = () => {
-  const { setUsername } = useAuth();
+  const { username, setUsername } = useAuth();
   const router = useRouter();
 
   const {
@@ -20,6 +21,12 @@ const Login: NextPage = () => {
     formState: { errors },
     setError,
   } = useForm<Inputs>();
+
+  useEffect(() => {
+    if (username !== "") {
+      router.push("/");
+    }
+  }, [router, username]);
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {

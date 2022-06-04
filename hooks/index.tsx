@@ -27,3 +27,13 @@ export const useSessionStorage = ({ key, defaultValue }: Props) => {
 
   return [value, setValue];
 };
+
+export const useHasMounted = () => {
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  return hasMounted;
+};
