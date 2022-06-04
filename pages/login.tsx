@@ -1,5 +1,9 @@
+import axios from "axios";
 import type { NextPage } from "next";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useRouter } from "next/router";
+
+import { useAuth } from "../contexts";
 
 type Inputs = {
   username: string;
@@ -7,14 +11,30 @@ type Inputs = {
 };
 
 const Login: NextPage = () => {
+  const { setUsername } = useAuth();
+  const router = useRouter();
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
+    setError,
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = (data: any) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    try {
+      await axios.post("/api/auth", data);
+
+      setUsername(data.username);
+
+      router.push("/");
+    } catch (error) {
+      setError("username", {
+        type: "manual",
+        // @ts-expect-error not going to type error
+        message: error.response.data.error,
+      });
+    }
+  };
 
   return (
     <main className="">
@@ -33,7 +53,9 @@ const Login: NextPage = () => {
           />
           {errors.username && (
             <span className="text-red-500 text-sm mt-2">
-              A username is required
+              {errors.username.type === "required"
+                ? "A username is required"
+                : errors.username.message}
             </span>
           )}
         </label>
