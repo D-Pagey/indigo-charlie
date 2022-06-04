@@ -9,7 +9,7 @@ type Props = {
 };
 
 export const PageLayout: FC<Props> = ({ children }) => {
-  const { username, handleLogout } = useAuth();
+  const { username, handleLogout, isSSR } = useAuth();
 
   return (
     <div className="flex flex-col items-center min-h-screen">
@@ -31,7 +31,7 @@ export const PageLayout: FC<Props> = ({ children }) => {
           </a>
         </Link>
 
-        {username && (
+        {!isSSR && username && (
           <button
             type="button"
             className="bg-primary px-4 py-2 rounded"

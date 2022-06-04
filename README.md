@@ -20,3 +20,4 @@
 
 - with more time would have added stuff to home page
 - chose not to implement a login with cookies solution
+- explain code structure - global state, styling etc

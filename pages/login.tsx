@@ -13,6 +13,7 @@ type Inputs = {
 const Login: NextPage = () => {
   const { setUsername } = useAuth();
   const router = useRouter();
+
   const {
     register,
     handleSubmit,

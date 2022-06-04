@@ -5,20 +5,25 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 import { useAuth } from "../contexts";
+import { useSessionStorage } from "../hooks";
 
 const Home: NextPage<{ image: string }> = ({ image }) => {
-  const { username } = useAuth();
+  const { username, isSSR } = useAuth();
   const router = useRouter();
+  const [storedUsername] = useSessionStorage({
+    key: "username",
+    defaultValue: "",
+  });
 
   useEffect(() => {
-    if (username === undefined) {
+    if (username === "") {
       router.push("/login");
     }
-  }, [router, username]);
+  }, [router, storedUsername, username]);
 
   return (
     <main className="flex flex-col items-center">
-      <h1 className="text-2xl mb-4">Welcome {username}</h1>
+      {!isSSR && <h1 className="text-2xl mb-4">Welcome {username}</h1>}
 
       <Image src={image} width="244" height="514" alt="incard" />
 
