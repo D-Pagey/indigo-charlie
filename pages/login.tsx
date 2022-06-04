@@ -45,7 +45,7 @@ const Login: NextPage = () => {
   };
 
   return (
-    <main className="">
+    <main>
       <h1 className="text-3xl mb-4">Login</h1>
 
       <form

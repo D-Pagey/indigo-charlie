@@ -5,7 +5,7 @@
 - [x] It should Handle errors e.g. if incorrect details were entered or session has expired.
 - [x] The session should be persistent e.g. on page reload the user should not be taken back to the login page. If the session has expired then they should be redirected back to the login page.
 - [x] It would be nice to support SSR.
-- [ ] Create 2-3 unit tests.
+- [x] Create 2-3 unit tests.
 - [x] Deploy the app to Netlify.
 
 ## To Do:

@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login renders 1`] = `
+<main>
+  <h1
+    class="text-3xl mb-4"
+  >
+    Login
+  </h1>
+  <form
+    class="flex flex-col text-black"
+  >
+    <label
+      class="flex flex-col text-white mb-4"
+    >
+      Username
+      <input
+        class="mt-2 p-2 rounded text-lg text-black"
+        name="username"
+        placeholder="Enter your username..."
+      />
+    </label>
+    <label
+      class="flex flex-col text-white mb-4"
+    >
+      Password
+      <input
+        class="mt-2 p-2 rounded text-lg text-black"
+        name="password"
+        placeholder="Enter your password..."
+      />
+    </label>
+    <input
+      class="text-white bg-primary p-2 rounded-lg mt-4 cursor-pointer"
+      type="submit"
+      value="Login"
+    />
+  </form>
+</main>
+`;
