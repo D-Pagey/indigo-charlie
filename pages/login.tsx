@@ -4,7 +4,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useRouter } from "next/router";
 
 import { useAuth } from "../contexts";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 type Inputs = {
   username: string;
@@ -12,6 +12,7 @@ type Inputs = {
 };
 
 const Login: NextPage = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const { username, setUsername } = useAuth();
   const router = useRouter();
 
@@ -70,11 +71,21 @@ const Login: NextPage = () => {
 
         <label className="flex flex-col text-white mb-4">
           Password
-          <input
-            placeholder="Enter your password..."
-            className="mt-2 p-2 rounded text-lg text-black"
-            {...register("password", { required: true })}
-          />
+          <div className="flex items-center mt-2">
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter your password..."
+              className="p-2 rounded text-lg text-black flex-grow"
+              {...register("password", { required: true })}
+            />
+            <button
+              type="button"
+              className="text-primary border border-primary px-4 py-2 rounded ml-4"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? "Hide" : "Show"}
+            </button>
+          </div>
           {errors.password && (
             <span className="text-red-500 text-sm mt-2">
               A password is required

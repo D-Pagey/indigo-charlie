@@ -8,10 +8,6 @@
 - [x] Create 2-3 unit tests.
 - [x] Deploy the app to Netlify.
 
-## To Do:
-
-- [ ] Add password toggle
-
 ## Notes
 
 - with more time would have added stuff to home page
